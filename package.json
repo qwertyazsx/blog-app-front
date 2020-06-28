@@ -1,0 +1,36 @@
+{
+    "name": "blog-app-front",
+    "version": "1.0.0",
+    "description": "frontend app of snorlaxious blog",
+    "main": "index.js",
+    "repository": "https://github.com/qwertyazsx/blog-app-front.git",
+    "author": "Junghyun Park <qwertyazsxc@gmail.com>",
+    "license": "MIT",
+    "scripts": {
+        "dev": "./node_modules/.bin/webpack-dev-server --open",
+        "build": "./node_modules/.bin/webpack -w"
+    },
+    "devDependencies": {
+        "@babel/cli": "^7.10.3",
+        "@babel/core": "^7.10.3",
+        "@babel/plugin-proposal-class-properties": "^7.10.1",
+        "@babel/preset-env": "^7.10.3",
+        "@babel/preset-react": "^7.10.1",
+        "@babel/preset-typescript": "^7.10.1",
+        "@types/react": "^16.9.41",
+        "@types/react-dom": "^16.9.8",
+        "babel-loader": "^8.1.0",
+        "css-loader": "^3.6.0",
+        "html-webpack-plugin": "^4.3.0",
+        "node-sass": "^4.14.1",
+        "react": "^16.13.1",
+        "react-dom": "^16.13.1",
+        "react-hot-loader": "^4.12.21",
+        "sass-loader": "^8.0.2",
+        "style-loader": "^1.2.1",
+        "typescript": "^3.9.5",
+        "webpack": "^4.43.0",
+        "webpack-cli": "^3.3.12",
+        "webpack-dev-server": "^3.11.0"
+    }
+}
