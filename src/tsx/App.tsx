@@ -1,7 +1,5 @@
 import * as React from 'react';
 
-export interface AppProps {}
-
-export const App: React.FC<AppProps> = props => {
+export const App: React.FC = () => {
     return <div className="App">hello world!</div>;
 }
