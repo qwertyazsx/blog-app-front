@@ -1,7 +1,7 @@
-import React from 'react';
+import * as React from 'react';
 
-function App() {
+export interface AppProps {}
+
+export const App: React.FC<AppProps> = props => {
     return <div className="App">hello world!</div>;
 }
-
-export default App;
