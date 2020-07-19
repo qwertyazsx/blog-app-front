@@ -3,7 +3,7 @@ import { Header } from './Header';
 import { Content } from './Content';
 import { Footer } from './Footer';
 import { Sidebar } from './Sidebar';
-import '../styles/scss/App.scss';
+import '../../public/styles/scss/App.scss';
 
 export const App = () => {
     return (

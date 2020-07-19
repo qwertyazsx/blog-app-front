@@ -41,5 +41,5 @@ module.exports = {
         port: 3000,
         historyApiFallback: true,
     },
-    plugins: [new HtmlWebpackPlugin({ template: './index.html' })],
+    plugins: [new HtmlWebpackPlugin({ template: './public/index.html' })],
 };
