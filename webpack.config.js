@@ -15,6 +15,11 @@ module.exports = {
                 use: ['style-loader', 'css-loader', 'sass-loader'],
                 exclude: ['/node_modules'],
             },
+            {
+                test: /\.(otf|ttf|woff|woff2)$/,
+                use: ['file-loader'],
+                exclude: ['/node_modules'],
+            },
         ],
     },
     resolve: {

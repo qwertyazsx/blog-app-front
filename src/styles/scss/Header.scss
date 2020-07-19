@@ -1,0 +1,16 @@
+$header-background: #5e5e5e;
+$title-color: #fffcf4;
+
+.header {
+    display: block;
+    height: 100px;
+    background-color: $header-background;
+
+    h1 {
+        margin: auto;
+        font-size: 50px;
+        color: $title-color;
+        font-family: 'Permanent Marker';
+        font-weight: 400;
+    }
+}

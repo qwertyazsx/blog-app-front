@@ -1,0 +1,29 @@
+@import './fonts.scss';
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+div,
+h1 {
+    display: block;
+}
+
+body,
+div,
+header,
+a,
+h1 {
+    margin: 0;
+}
+
+code,
+.code {
+    font-family: 'Fira Code';
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+}
