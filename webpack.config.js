@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    entry: './src/tsx/index.tsx',
+    entry: './src/index.tsx',
     module: {
         rules: [
             {
@@ -34,6 +34,7 @@ module.exports = {
         hot: true,
         host: 'localhost',
         port: 3000,
+        historyApiFallback: true,
     },
     plugins: [new HtmlWebpackPlugin({ template: './index.html' })],
 };
