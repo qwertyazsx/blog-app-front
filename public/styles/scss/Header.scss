@@ -1,9 +1,9 @@
-$header-background: #5e5e5e;
-$title-color: #fffcf4;
+$header-background: #fffcf4;
+$title-color: black;
 
 .header {
     display: block;
-    height: 100px;
+    height: 80px;
     background-color: $header-background;
 
     h1 {
@@ -12,5 +12,12 @@ $title-color: #fffcf4;
         color: $title-color;
         font-family: 'Permanent Marker';
         font-weight: 400;
+        padding-bottom: 10px;
+
+        a {
+            cursor: pointer;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+        }
     }
 }

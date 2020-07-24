@@ -1,15 +1,15 @@
 import * as React from 'react';
-import { Header } from './Header';
 import { Content } from './Content';
 import { Footer } from './Footer';
-import { Sidebar } from './Sidebar';
+import { HeaderContainer } from '../redux/containers/HeaderContainer';
+import { SidebarContainer } from '../redux/containers/SidebarContainer';
 import '../../public/styles/scss/App.scss';
 
 export const App = () => {
     return (
         <div className="app">
-            <Header />
-            <Sidebar />
+            <HeaderContainer />
+            <SidebarContainer />
             <Content />
             <Footer />
         </div>
