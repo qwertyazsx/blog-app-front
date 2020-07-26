@@ -5,12 +5,10 @@ $title-color: $snore-black;
 
 .header {
     display: block;
-    height: 150px;
     background-color: $header-background;
 
     h1 {
         margin: auto;
-        font-size: 70px;
         color: $title-color;
         font-family: 'Permanent Marker';
         font-weight: 400;
@@ -48,10 +46,29 @@ $title-color: $snore-black;
     }
 }
 
+.header.normal {
+    height: 200px;
+
+    h1 {
+        font-size: 70px;
+    }
+}
+
+$header-mini-height: 80px;
+
 .header.mini {
-    height: 80px;
+    position: fixed;
+    top: -$header-mini-height;
+    left: 0;
+    width: 100%;
+    height: $header-mini-height;
+    transition-duration: 0.2s;
 
     h1 {
         font-size: 50px;
     }
+}
+
+.header.mini.active {
+    top: 0;
 }
