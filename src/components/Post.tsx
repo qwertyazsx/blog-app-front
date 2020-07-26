@@ -5,8 +5,18 @@ import '../../public/styles/scss/Post.scss';
 export const Post = () => {
     return (
         <div className="post">
-            <div className="article_title">This is Article_Title</div>
-            <article>This is Article</article>
+            <div className="p_title_container">
+                <div className="p_title">
+                    <a>This is Post_Title</a>
+                </div>
+            </div>
+            <div className="p_article_container">
+                <div className="p_article">
+                    <span>This is span in Article</span>
+                    <br />
+                    <code>This is code in Article</code>
+                </div>
+            </div>
         </div>
     );
 };

@@ -1,9 +1,28 @@
-$post-background: lightgrey;
+$article-title-background: lightgrey;
+$article-background: #ddfff8;
 
 .post {
     width: 850px;
-    min-height: 1080px;
-    margin: 0 auto;
-    background-color: $post-background;
+    margin: 50px auto;
     font-family: 'Noto Sans';
+}
+
+.p_title_container {
+    text-align: center;
+    font-size: 50px;
+    margin-bottom: 30px;
+    background-color: $article-title-background;
+}
+
+.p_title {
+    padding: 100px;
+}
+
+.p_article_container {
+    min-height: 1080px;
+    background-color: $article-background;
+}
+
+.p_article {
+    padding: 20px;
 }
