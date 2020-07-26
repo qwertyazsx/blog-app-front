@@ -9,8 +9,8 @@ type SidebarProps = {
 export const Sidebar = (props: SidebarProps) => {
     return (
         <div className={`sidebar${props.sidebarCollapsed ? '' : ' active'}`}>
-            <button className="s_close_button" onClick={props.closeSidebar}>
-                close
+            <button className="s_btn_close" onClick={props.closeSidebar}>
+                <img />
             </button>
         </div>
     );

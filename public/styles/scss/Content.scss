@@ -1,6 +1,7 @@
-$content-background: #fffcf4;
+@import './global.scss';
+
+$content-background: $snore-white;
 
 .content {
     background-color: $content-background;
-    min-height: 1080px;
 }

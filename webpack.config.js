@@ -16,7 +16,7 @@ module.exports = {
                 exclude: ['/node_modules'],
             },
             {
-                test: /\.(otf|ttf|woff|woff2)$/,
+                test: /\.(otf|ttf|woff|woff2|svg)$/,
                 use: ['file-loader'],
                 exclude: ['/node_modules'],
             },

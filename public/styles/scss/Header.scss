@@ -1,14 +1,16 @@
-$header-background: #fffcf4;
-$title-color: black;
+@import './global.scss';
+
+$header-background: $snore-white;
+$title-color: $snore-black;
 
 .header {
     display: block;
-    height: 80px;
+    height: 150px;
     background-color: $header-background;
 
     h1 {
         margin: auto;
-        font-size: 50px;
+        font-size: 70px;
         color: $title-color;
         font-family: 'Permanent Marker';
         font-weight: 400;
@@ -19,5 +21,37 @@ $title-color: black;
             -moz-user-select: none;
             -webkit-user-select: none;
         }
+    }
+
+    button {
+        width: 32px;
+        height: 32px;
+        border: none;
+        cursor: pointer;
+        outline: none;
+    }
+
+    .h_btn_side {
+        margin-left: 16px;
+
+        img {
+            content: url('../icons/sidebar.svg');
+        }
+    }
+
+    .h_btn_search {
+        margin-right: 16px;
+
+        img {
+            content: url('../icons/search.svg');
+        }
+    }
+}
+
+.header.mini {
+    height: 80px;
+
+    h1 {
+        font-size: 50px;
     }
 }

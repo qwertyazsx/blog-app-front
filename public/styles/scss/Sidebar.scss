@@ -1,4 +1,6 @@
-$sidebar-background: #666699;
+@import './global.scss';
+
+$sidebar-background: $snore-black;
 $sidebar-width: 250px;
 
 .sidebar {
@@ -7,11 +9,35 @@ $sidebar-width: 250px;
     left: -$sidebar-width;
     width: $sidebar-width;
     height: 100%;
+    z-index: 100;
     background-color: $sidebar-background;
-    transition-duration: 0.5s;
+    transition-duration: 0.4s;
+    transition-timing-function: cubic-bezier(0.25, 0.81, 0.6, 0.99);
+    font-family: 'Noto Sans';
+
+    button {
+        width: 32px;
+        height: 32px;
+        border: none;
+        cursor: pointer;
+        outline: none;
+    }
+
+    .s_btn_close {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+
+        img {
+            content: url('../icons/x.svg');
+            filter: invert(1);
+        }
+    }
 }
 
 .sidebar.active {
     left: 0;
-    transition-duration: 0.5s;
+    -webkit-box-shadow: 10px 0px 20px 10px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 10px 0px 20px 10px rgba(0, 0, 0, 0.4);
+    box-shadow: 10px 0px 20px 10px rgba(0, 0, 0, 0.4);
 }
