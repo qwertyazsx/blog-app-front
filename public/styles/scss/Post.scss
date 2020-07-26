@@ -1,0 +1,9 @@
+$post-background: lightgrey;
+
+.post {
+    width: 850px;
+    min-height: 1080px;
+    margin: 0 auto;
+    background-color: $post-background;
+    font-family: 'Noto Sans';
+}
