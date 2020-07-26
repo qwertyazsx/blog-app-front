@@ -13,10 +13,12 @@ export const App = () => {
     React.useEffect(() => {
         window.addEventListener('scroll', (e: Event) => {
             const header = document.querySelector('.header');
-            if (window.scrollY > header.clientTop + header.clientHeight) {
-                dispatch(scrollUnderHeader());
-            } else {
-                dispatch(scrollAboveHeader());
+            if (header) {
+                if (window.scrollY > header.clientTop + header.clientHeight) {
+                    dispatch(scrollUnderHeader());
+                } else {
+                    dispatch(scrollAboveHeader());
+                }
             }
         });
     });
