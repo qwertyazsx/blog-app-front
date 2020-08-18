@@ -1,8 +1,31 @@
 import * as React from 'react';
 import '../../public/styles/scss/Post.scss';
+import axios from 'axios';
 
-// 내용
-export const Post = () => {
+type PostProps = {
+    match: {
+        params: {
+            postNo: string;
+        };
+    };
+};
+
+export const Post = (props: PostProps) => {
+    React.useEffect(() => {
+        fetchPost(props.match.params.postNo);
+    });
+
+    const fetchPost = async (postNo: string) => {
+        try {
+            const url = `/api/v1/posts/${postNo ? postNo : 'recent'}`;
+            const response = await axios.get(url);
+            document.getElementsByClassName('p_title')[0].innerHTML = response.data.title;
+            document.getElementsByClassName('p_article')[0].innerHTML = response.data.content;
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     return (
         <div className="post">
             <div className="p_title_container">

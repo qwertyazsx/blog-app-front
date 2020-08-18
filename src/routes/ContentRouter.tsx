@@ -8,6 +8,7 @@ export const ContentRouter = () => {
         <BrowserRouter>
             <Switch>
                 <Route exact path="/" component={Post} />
+                <Route exact path="/post/:postNo" component={Post} />
                 <Route exact path="/postlist" component={PostList} />
                 <Redirect path="*" to="/" />
             </Switch>
