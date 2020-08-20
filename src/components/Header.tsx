@@ -25,6 +25,7 @@ export const Header = (props: HeaderProps) => {
                     <img />
                 </button>
                 <h1>
+                    {/* TODO: title 누르면 redirect */}
                     <a className="title">Snore</a>
                 </h1>
                 <button className="h_btn_search">
