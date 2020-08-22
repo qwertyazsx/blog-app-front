@@ -9,6 +9,7 @@ import axios from 'axios';
 export const Edit = () => {
     const history = useHistory();
     const editorRef: React.RefObject<Editor> = React.createRef();
+    
     const savePostRequest = async () => {
         try {
             const title = (document.getElementById('e_title') as HTMLInputElement).value;

@@ -1,28 +1,50 @@
-$article-title-background: lightgrey;
-$article-background: #ddfff8;
+@import './global.scss';
+
+$article-title-background: white;
+$article-background: white;
 
 .post {
-    width: 850px;
-    margin: 50px auto;
+    width: 1000px;
+    min-height: 700px;
+    margin: 10px auto;
     font-family: 'Noto Sans';
+    padding: 15px;
+    background: white;
+    -webkit-box-shadow: 10px 10px 29px 0px rgba(0, 0, 0, 0.33);
+    -moz-box-shadow: 10px 10px 29px 0px rgba(0, 0, 0, 0.33);
+    box-shadow: 10px 10px 29px 0px rgba(0, 0, 0, 0.33);
+    border-radius: 5px;
+}
+
+.message_container {
+    width: 100%;
+    display: grid;
+    place-items: center;
+    font-size: 30px;
 }
 
 .p_title_container {
-    text-align: center;
+    text-align: left;
     font-size: 50px;
     margin-bottom: 30px;
     background-color: $article-title-background;
 }
 
 .p_title {
-    padding: 100px;
+    padding: 50px 10px 10px 10px;
+}
+
+.p_title_time {
+    padding: 0px 15px 50px 15px;
+    font-size: 15px;
+    color: $snore-grey;
 }
 
 .p_article_container {
-    min-height: 1080px;
+    min-height: 700px;
     background-color: $article-background;
 }
 
 .p_article {
-    padding: 20px;
+    padding: 15px;
 }
