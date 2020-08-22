@@ -95,10 +95,13 @@ export const Post = (props: PostProps) => {
             <div className="p_title_container">
                 <div className="p_title">{post.title}</div>
                 <div className="p_title_time">{post.createDate}</div>
+                {/* TODO: 태그 추가 */}
+                {/* TODO: 포스트 수정 버튼 추가 */}
             </div>
             <div className="p_article_container">
                 <div className="p_article">{parse(post.content)}</div>
             </div>
+            {/* TODO: 전후 포스트 추가 */}
         </div>
     );
 };

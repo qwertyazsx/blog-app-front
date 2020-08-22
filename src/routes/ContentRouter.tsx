@@ -12,6 +12,7 @@ export const ContentRouter = () => {
                 <Route exact path="/post/:postNo" component={Post} />
                 <Route exact path="/postlist" component={PostList} />
                 <Route exact path="/edit" component={Edit} />
+                {/* TODO: 포스트 수정 추가 */}
                 <Redirect path="*" to="/" />
             </Switch>
         </BrowserRouter>

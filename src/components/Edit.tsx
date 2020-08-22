@@ -14,6 +14,7 @@ export const Edit = () => {
         try {
             const title = (document.getElementById('e_title') as HTMLInputElement).value;
             const content = editorRef.current?.getInstance().getHtml();
+            // TODO: 태그 추가
             const response = await axios.post('/api/v1/posts/save', {
                 title: title,
                 content: content,
