@@ -5,7 +5,6 @@ $article-background: white;
 
 .post {
     width: 1000px;
-    min-height: 700px;
     margin: 10px auto;
     font-family: 'Noto Sans';
     padding: 15px;
@@ -18,6 +17,7 @@ $article-background: white;
 
 .message_container {
     width: 100%;
+    height: 700px;
     display: grid;
     place-items: center;
     font-size: 30px;
@@ -41,7 +41,6 @@ $article-background: white;
 }
 
 .p_article_container {
-    min-height: 700px;
     background-color: $article-background;
 }
 
