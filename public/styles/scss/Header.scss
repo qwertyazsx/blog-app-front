@@ -9,7 +9,6 @@ $title-color: $snore-black;
 
     h1 {
         margin: auto;
-        color: $title-color;
         font-family: 'Permanent Marker';
         font-weight: 400;
 
@@ -17,6 +16,8 @@ $title-color: $snore-black;
             cursor: pointer;
             -moz-user-select: none;
             -webkit-user-select: none;
+            text-decoration: none;
+            color: $title-color;
         }
     }
 

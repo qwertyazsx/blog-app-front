@@ -6,16 +6,16 @@ type HeaderProps = {
     isScrollUnderHeader: boolean;
 };
 
-export const Header = (props: HeaderProps) => {
+export const Header = (props: HeaderProps) => {    
     return (
         <header>
             <div className="flex header normal">
                 <button className="h_btn_side" onClick={props.openSidebar}>
                     <img />
                 </button>
-                <h1>
-                    <a className="title">Snore</a>
-                </h1>
+                    <h1>
+                        <a className="title" href="/">Snore</a>
+                    </h1>
                 <button className="h_btn_search">
                     <img />
                 </button>
@@ -25,8 +25,7 @@ export const Header = (props: HeaderProps) => {
                     <img />
                 </button>
                 <h1>
-                    {/* TODO: title 누르면 redirect */}
-                    <a className="title">Snore</a>
+                    <a className="title" href="/">Snore</a>
                 </h1>
                 <button className="h_btn_search">
                     <img />

@@ -3,11 +3,10 @@ import '../../public/styles/scss/Edit.scss';
 import 'codemirror/lib/codemirror.css';
 import '@toast-ui/editor/dist/toastui-editor.css';
 import { Editor } from '@toast-ui/react-editor';
-import { useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 export const Edit = () => {
-    const history = useHistory();
     const editorRef: React.RefObject<Editor> = React.createRef();
     
     const savePostRequest = async () => {
@@ -20,7 +19,6 @@ export const Edit = () => {
                 content: content,
             });
             console.log(response);
-            history.push('/');
         } catch (error) {
             console.log(error);
         }
@@ -34,15 +32,15 @@ export const Edit = () => {
                     <input id="e_title"></input>
                 </div>
                 <div className="e_content_container">
-                    <Editor height="600px" initialEditType="markdown" ref={editorRef} />
+                    <Editor height="600px" initialEditType="markdown" ref={editorRef}/>
                 </div>
                 <div className="e_btn_container">
-                    <button className="e_cancel" onClick={() => history.goBack()}>
-                        취소
-                    </button>
-                    <button className="e_submit" onClick={savePostRequest}>
-                        저장
-                    </button>
+                    <Link to="/">
+                        <button className="e_cancel">취소</button>
+                    </Link>
+                    <Link to="/">
+                        <button className="e_submit" onClick={savePostRequest}>저장</button>
+                    </Link>
                 </div>
             </div>
         </div>
