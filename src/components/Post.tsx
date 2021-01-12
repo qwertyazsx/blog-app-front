@@ -102,6 +102,7 @@ export const Post = (props: PostProps) => {
                 </div>
             </div>
             <div className="p_article_container">
+                {/* TODO: 마크다운 html로 변환 */}
                 <div className="p_article">{parse(post.content)}</div>
             </div>
             {/* TODO: 전후 포스트 추가 */}
