@@ -12,50 +12,51 @@ type PostProps = {
 };
 
 type PostType = {
+    postNo: string;
     title: string;
     content: string;
     createDate: string;
     updateDate: string | null;
 } | null;
 
-const usePost = (postNo: string, deps: React.DependencyList) => {
-    const [post, setPost] = React.useState<PostType>(null);
-    const [isError, setIsError] = React.useState(false);
-    const [isNoContent, setIsNoContent] = React.useState(false);
-    const [isLoading, setIsLoading] = React.useState(false);
-
-    const fetchPost = async (postNo: string) => {
-        const url = `/api/v1/posts/${postNo ? postNo : 'recent'}`;
-        const response = await axios.get(url);
-        if (response.status === 204) setIsNoContent(true);
-        setPost({
-            title: response.data.title,
-            content: response.data.content,
-            createDate: response.data.createDate,
-            updateDate: response.data.updateDate,
-        });
-    };
-
-    const process = async () => {
-        setIsError(false);
-        setIsLoading(true);
-        try {
-            await fetchPost(postNo);
-        } catch (error) {
-            console.log(error);
-            setIsError(true);
-        }
-        setIsLoading(false);
-    };
-
-    React.useEffect(() => {
-        process();
-    }, deps);
-
-    return { post, isError, isNoContent, isLoading };
-};
-
 export const Post = (props: PostProps) => {
+    const usePost = (postNo: string, deps: React.DependencyList) => {
+        const [post, setPost] = React.useState<PostType>(null);
+        const [isError, setIsError] = React.useState(false);
+        const [isNoContent, setIsNoContent] = React.useState(false);
+        const [isLoading, setIsLoading] = React.useState(false);
+    
+        const fetchPost = async (postNo: string) => {
+            const url = `/api/v1/posts/${postNo ? postNo : 'recent'}`;
+            const response = await axios.get(url);
+            if (response.status === 204) setIsNoContent(true);
+            setPost({
+                postNo: response.data.post_no,
+                title: response.data.title,
+                content: response.data.content,
+                createDate: response.data.createDate,
+                updateDate: response.data.updateDate,
+            });
+        };
+    
+        const process = async () => {
+            setIsError(false);
+            setIsLoading(true);
+            try {
+                await fetchPost(postNo);
+            } catch (error) {
+                console.log(error);
+                setIsError(true);
+            }
+            setIsLoading(false);
+        };
+    
+        React.useEffect(() => {
+            process();
+        }, deps);
+    
+        return { post, isError, isNoContent, isLoading };
+    };
     const { post, isError, isNoContent, isLoading } = usePost(props.match.params.postNo, []);
 
     if (isLoading) {
@@ -94,9 +95,11 @@ export const Post = (props: PostProps) => {
         <div className="post">
             <div className="p_title_container">
                 <div className="p_title">{post.title}</div>
-                <div className="p_title_time">{post.createDate}</div>
-                {/* TODO: 태그 추가 */}
-                {/* TODO: 포스트 수정 버튼 추가 */}
+                <div className="p_info">
+                    <div className="p_title_time">{post.createDate}</div>
+                    {/* TODO: 태그 추가 */}
+                    <a className="p_edit" href={`/edit/${post.postNo}`}>수정</a>
+                </div>
             </div>
             <div className="p_article_container">
                 <div className="p_article">{parse(post.content)}</div>

@@ -34,10 +34,26 @@ $article-background: white;
     padding: 50px 10px 10px 10px;
 }
 
-.p_title_time {
+.p_info {
+    display: grid;
+    grid-template-columns: 180px 50px 1fr;
     padding: 0px 15px 50px 15px;
-    font-size: 15px;
-    color: $snore-grey;
+
+    .p_title_time {
+        font-size: 15px;
+        color: $snore-grey;
+    }
+
+    .p_edit {
+        cursor: pointer;
+        width: 50px;
+        text-align: center;
+        font-size: 15px;
+        text-decoration: none;
+        background-color: $snore-black;
+        color:white;
+        border-radius: 5px;
+    }
 }
 
 .p_article_container {

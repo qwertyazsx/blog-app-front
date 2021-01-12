@@ -1,10 +1,12 @@
 import * as React from 'react';
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Redirect, useHistory } from 'react-router-dom';
 import { Post } from '../components/Post';
 import { PostList } from '../components/PostList';
 import { Edit } from '../components/Edit';
 
 export const ContentRouter = () => {
+    const history = useHistory();
+
     return (
         <BrowserRouter>
             <Switch>
@@ -12,7 +14,7 @@ export const ContentRouter = () => {
                 <Route exact path="/post/:postNo" component={Post} />
                 <Route exact path="/postlist" component={PostList} />
                 <Route exact path="/edit" component={Edit} />
-                {/* TODO: 포스트 수정 추가 */}
+                <Route exact path="/edit/:postNo" component={Edit} />
                 <Redirect path="*" to="/" />
             </Switch>
         </BrowserRouter>
