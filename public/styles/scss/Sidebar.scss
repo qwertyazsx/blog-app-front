@@ -43,7 +43,23 @@ $sidebar-width: 250px;
         a {
             text-decoration: none;
             font-size: 18px;
+            margin-bottom: 20px;
             color: white;
+        }
+
+        .s_a_postlist{
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+
+            .s_count {
+                display: flex;
+                justify-content: center;
+                min-width: 30px;
+                border-radius: 5px;
+                color: $snore-black;
+                background-color: white;
+            }
         }
     }
 }
