@@ -16,6 +16,7 @@ export const Sidebar = (props: SidebarProps) => {
                 <a href="/edit" className="s_a_edit">
                     📝 포스트 작성
                 </a>
+                {/* TODO: 포스트 목록 버튼 추가 */}
             </div>
         </div>
     );
