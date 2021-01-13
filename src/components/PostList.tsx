@@ -11,16 +11,17 @@ type PostListProps = {
     };
 };
 
-type SimplePostType = {
+type PostType = {
     post_no: string;
     title: string;
+    content: string;
     createDate: string;
     updateDate: string | null;
-};
+}
 
 export const PostList = (props: PostListProps) => {
     const usePost = (page: number, deps: React.DependencyList) => {
-        const [postList, setPostList] = React.useState<Array<SimplePostType>>([]);
+        const [postList, setPostList] = React.useState<Array<PostType>>([]);
         const [endPage, setEndPage] = React.useState(1);
         const [isError, setIsError] = React.useState(false);
         const [isNoContent, setIsNoContent] = React.useState(false);
@@ -33,10 +34,11 @@ export const PostList = (props: PostListProps) => {
             if (response.data.totalPages < props.match.params.page) setIsError(true);
             else if (response.data.numberOfElements === 0) setIsNoContent(true);
             else {
-                setPostList(response.data.content.map((post: SimplePostType) => {
+                setPostList(response.data.content.map((post: PostType) => {
                     return {
                         post_no: post.post_no,
                         title: post.title,
+                        content: post.content,
                         createDate: post.createDate,
                         updateDate: post.updateDate,
                     }
@@ -63,6 +65,13 @@ export const PostList = (props: PostListProps) => {
 
         return { postList, endPage, isError, isNoContent, isLoading };
     };
+
+    const truncate = (text: string) => {
+        const limit = 200;
+        if (text.length > limit) return text.substring(0, limit) + '...';
+        return text;
+    };
+
     const { postList, endPage, isError, isNoContent, isLoading } = usePost(props.match.params.page, []);
 
     if (isLoading) {
@@ -96,18 +105,27 @@ export const PostList = (props: PostListProps) => {
     }
 
     if (!postList) return null;
-    
+
     return (
         <div className="postlist">
             <div className="pl_container">
-                <ul className="pl_list">
+                <div className="pl_list">
                     {postList.map((post) => (
-                        <li key={post.post_no}>
-                            {/* TODO: 번호, 시간 추가 및 디자인 변경 */}
-                            <Link to={`/post/${post.post_no}`}>{post.title}</Link>
-                        </li>
+                        <Link to={`/post/${post.post_no}`} className="pl_card">
+                            <div className="pl_card_header">
+                                <div className="pl_card_title">{post.title}</div>
+                                <div className="pl_card_tag_container">
+                                    {/* TODO: 태그 추가 */}
+                                    <div className="pl_card_tag">#태그1</div>
+                                    <div className="pl_card_tag">#태그2</div>
+                                    <div className="pl_card_tag">#태그3</div>
+                                </div>
+                            </div>
+                            <div className="pl_card_content">{truncate(post.content)}</div>
+                            <div className="pl_card_updatedate">{post.updateDate}</div>
+                        </Link>
                     ))}
-                </ul>
+                </div>
             </div>
             <div className="pl_pages">
                 {props.match.params.page > 1 ? (<span>⬅️</span>) : ''}

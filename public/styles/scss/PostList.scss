@@ -1,10 +1,12 @@
 @import './global.scss';
 
+$header-grey: #5a5a5a;
+
 .postlist {
     width: 1000px;
     margin: 10px auto;
     font-family: 'Noto Sans';
-    padding: 15px;
+    padding: 30px;
     background: white;
     -webkit-box-shadow: 10px 10px 29px 0px rgba(0, 0, 0, 0.33);
     -moz-box-shadow: 10px 10px 29px 0px rgba(0, 0, 0, 0.33);
@@ -22,6 +24,72 @@
 
 .pl_list {
     display: grid;
+
+    .pl_card {
+        display: grid;
+        border-radius: 5px;
+        margin-bottom: 30px;
+        -webkit-box-shadow: 10px 10px 29px 0px rgba(0, 0, 0, 0.33);
+        -moz-box-shadow: 10px 10px 29px 0px rgba(0, 0, 0, 0.33);
+        box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 0.33);
+        border-radius: 5px;
+        overflow: hidden;
+        text-decoration: none;
+
+        div {
+            padding: 5px 10px;
+        }
+
+        .pl_card_header {
+            display: flex;
+            background-color: $header-grey;
+            color: white;
+            align-items: center;
+            justify-content: space-between;
+            transition: background-color 0.5s;
+
+            .pl_card_title {
+                font-size: 24px;
+            }
+
+            .pl_card_tag_container {
+                display: flex;
+                padding: 0;
+
+                .pl_card_tag {
+                    padding: 2px 5px;
+                    margin-left: 5px;
+                    border-radius: 10px;
+                    background-color: $snore-white;
+                    color: $header-grey;
+                    transition: color 0.5s;
+                }
+            }
+        }
+
+        .pl_card_content {
+            padding: 10px 15px;
+            color: $snore-black;
+        }
+
+        .pl_card_updatedate {
+            padding: 10px 15px;
+            color: $snore-grey;
+            font-size: 12px;
+        }
+    }
+
+    .pl_card:hover {
+        .pl_card_header {
+            background-color: $snore-black;
+        }
+
+        .pl_card_tag_container {
+            .pl_card_tag {
+                color: $snore-black;
+            }
+        }
+    }
 }
 
 .pl_pages {
