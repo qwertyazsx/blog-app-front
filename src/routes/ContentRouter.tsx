@@ -12,7 +12,7 @@ export const ContentRouter = () => {
             <Switch>
                 <Route exact path="/" component={Post} />
                 <Route exact path="/post/:postNo" component={Post} />
-                <Route exact path="/postlist" component={PostList} />
+                <Route exact path="/postlist/:page" component={PostList} />
                 <Route exact path="/edit" component={Edit} />
                 <Route exact path="/edit/:postNo" component={Edit} />
                 <Redirect path="*" to="/" />

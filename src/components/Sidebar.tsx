@@ -14,7 +14,7 @@ export const Sidebar = (props: SidebarProps) => {
             </button>
             <div className="s_menu">
                 <a href="/edit" className="s_a_edit">
-                    포스트 작성
+                    📝 포스트 작성
                 </a>
             </div>
         </div>
