@@ -12,7 +12,11 @@ export const Sidebar = (props: SidebarProps) => {
             <button className="s_btn_close" onClick={props.closeSidebar}>
                 <img />
             </button>
-            {/* TODO: 포스트 작성 버튼 추가 */}
+            <div className="s_menu">
+                <a href="/edit" className="s_a_edit">
+                    포스트 작성
+                </a>
+            </div>
         </div>
     );
 };
