@@ -21,7 +21,7 @@
     font-size: 30px;
 }
 
-.e_title_container {
+.e_title_container, .e_tag_container {
     display: grid;
     place-items: center;
     grid-template-columns: [first] 10% [second] 90%;

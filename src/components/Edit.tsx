@@ -72,10 +72,12 @@ export const Edit = (props: EditProps) => {
         try {
             const title = (document.getElementById('e_title') as HTMLInputElement).value;
             const content = editorRef.current?.getInstance().getMarkdown();
+            const tags = (document.getElementById('e_tags') as HTMLInputElement).value;
             // TODO: 태그 추가
             const response = await axios.post('/api/v1/posts/save', {
                 title: title,
                 content: content,
+                tags: tags,
             });
             console.log(response);
         } catch (error) {
@@ -146,6 +148,7 @@ export const Edit = (props: EditProps) => {
                         <div className="e_content_container">
                             <Editor height="600px" initialEditType="markdown" initialValue={post.content} ref={editorRef} />
                         </div>
+                        {/* TODO: 태그 추가 */}
                         <div className="e_btn_container">
                             <Link to={`/post/${post.postNo}`}>
                                 <button className="e_cancel">취소</button>
@@ -169,6 +172,10 @@ export const Edit = (props: EditProps) => {
                 </div>
                 <div className="e_content_container">
                     <Editor height="600px" initialEditType="markdown" ref={editorRef} />
+                </div>
+                <div className="e_tag_container">
+                    <span>태그</span>
+                    <input id="e_tags"></input>
                 </div>
                 <div className="e_btn_container">
                     <Link to="/">
