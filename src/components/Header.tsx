@@ -18,6 +18,7 @@ export const Header = (props: HeaderProps) => {
                     </h1>
                 <button className="h_btn_search">
                     <img />
+                    { /* TODO: 검색 추가 */}
                 </button>
             </div>
             <div className={`flex header mini${props.isScrollUnderHeader ? ' active' : ''}`}>
@@ -29,6 +30,7 @@ export const Header = (props: HeaderProps) => {
                 </h1>
                 <button className="h_btn_search">
                     <img />
+                    { /* TODO: 검색 추가 */}
                 </button>
             </div>
         </header>
