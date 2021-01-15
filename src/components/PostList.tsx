@@ -68,8 +68,14 @@ export const PostList = (props: PostListProps) => {
         return { postList, endPage, isError, isNoContent, isLoading };
     };
 
-    const truncate = (text: string) => {
+    const truncateContent = (text: string) => {
         const limit = 200;
+        if (text.length > limit) return text.substring(0, limit) + '...';
+        return text;
+    };
+
+    const truncateTitle = (text: string) => {
+        const limit = 50;
         if (text.length > limit) return text.substring(0, limit) + '...';
         return text;
     };
@@ -115,7 +121,7 @@ export const PostList = (props: PostListProps) => {
                     {postList.map((post) => (
                         <Link to={`/post/${post.post_no}`} className="pl_card" key={post.post_no}>
                             <div className="pl_card_header">
-                                <div className="pl_card_title">{post.title}</div>
+                                <div className="pl_card_title">{truncateTitle(post.title)}</div>
                                 <div className="pl_card_tag_container">
                                     {/* TODO: 태그 수 제한 추가 */}
                                     {post.tags.map((tag) => (
@@ -123,7 +129,7 @@ export const PostList = (props: PostListProps) => {
                                     ))}
                                 </div>
                             </div>
-                            <div className="pl_card_content">{truncate(post.content)}</div>
+                            <div className="pl_card_content">{truncateContent(post.content)}</div>
                             <div className="pl_card_updatedate">{post.updateDate}</div>
                         </Link>
                     ))}

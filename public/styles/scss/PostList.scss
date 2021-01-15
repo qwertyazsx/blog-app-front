@@ -41,12 +41,13 @@ $header-grey: #5a5a5a;
         }
 
         .pl_card_header {
-            display: flex;
+            display: grid;
             background-color: $header-grey;
             color: white;
             align-items: center;
             justify-content: space-between;
             transition: background-color 0.5s;
+            grid-template-columns: 2fr 1fr;
 
             .pl_card_title {
                 font-size: 24px;
@@ -55,10 +56,12 @@ $header-grey: #5a5a5a;
             .pl_card_tag_container {
                 display: flex;
                 padding: 0;
+                flex-wrap: wrap;
+                justify-content: flex-end;
 
                 .pl_card_tag {
                     padding: 2px 5px;
-                    margin-left: 5px;
+                    margin: 5px;
                     border-radius: 10px;
                     background-color: $snore-white;
                     color: $header-grey;
