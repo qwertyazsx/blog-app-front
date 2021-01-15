@@ -111,7 +111,7 @@ export const PostList = (props: PostListProps) => {
             <div className="pl_container">
                 <div className="pl_list">
                     {postList.map((post) => (
-                        <Link to={`/post/${post.post_no}`} className="pl_card">
+                        <Link to={`/post/${post.post_no}`} key={post.post_no} className="pl_card">
                             <div className="pl_card_header">
                                 <div className="pl_card_title">{post.title}</div>
                                 <div className="pl_card_tag_container">

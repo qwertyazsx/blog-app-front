@@ -1,12 +1,10 @@
 import * as React from 'react';
-import { BrowserRouter, Switch, Route, Redirect, useHistory } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import { Post } from '../components/Post';
 import { PostList } from '../components/PostList';
 import { Edit } from '../components/Edit';
 
 export const ContentRouter = () => {
-    const history = useHistory();
-
     return (
         <BrowserRouter>
             <Switch>
