@@ -15,6 +15,7 @@ type PostType = {
     post_no: string;
     title: string;
     content: string;
+    tags: Array<string>;
     createDate: string;
     updateDate: string | null;
 }
@@ -39,6 +40,7 @@ export const PostList = (props: PostListProps) => {
                         post_no: post.post_no,
                         title: post.title,
                         content: post.content,
+                        tags: post.tags,
                         createDate: post.createDate,
                         updateDate: post.updateDate,
                     }
@@ -111,14 +113,14 @@ export const PostList = (props: PostListProps) => {
             <div className="pl_container">
                 <div className="pl_list">
                     {postList.map((post) => (
-                        <Link to={`/post/${post.post_no}`} key={post.post_no} className="pl_card">
+                        <Link to={`/post/${post.post_no}`} className="pl_card" key={post.post_no}>
                             <div className="pl_card_header">
                                 <div className="pl_card_title">{post.title}</div>
                                 <div className="pl_card_tag_container">
-                                    {/* TODO: 태그 추가 */}
-                                    <div className="pl_card_tag">#태그1</div>
-                                    <div className="pl_card_tag">#태그2</div>
-                                    <div className="pl_card_tag">#태그3</div>
+                                    {/* TODO: 태그 수 제한 추가 */}
+                                    {post.tags.map((tag) => (
+                                        <div className="pl_card_tag" key={tag}>{tag}</div>
+                                    ))}
                                 </div>
                             </div>
                             <div className="pl_card_content">{truncate(post.content)}</div>
