@@ -119,7 +119,7 @@ export const PostList = (props: PostListProps) => {
                                 <div className="pl_card_tag_container">
                                     {/* TODO: 태그 수 제한 추가 */}
                                     {post.tags.map((tag) => (
-                                        <div className="pl_card_tag" key={tag}>{tag}</div>
+                                        <div className="pl_card_tag" key={tag}>#{tag}</div>
                                     ))}
                                 </div>
                             </div>
