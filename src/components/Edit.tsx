@@ -18,6 +18,7 @@ type PostType = {
     postNo: string;
     title: string;
     content: string;
+    tags: Array<string>;
     createDate: string;
     updateDate: string | null;
 } | null;
@@ -25,6 +26,7 @@ type PostType = {
 export const Edit = (props: EditProps) => {
     const editorRef: React.RefObject<Editor> = React.createRef();
     const [titleValue, setTitleValue] = React.useState('');
+    const [tagsValue, setTagsValue] = React.useState('');
     const usePost = (postNo: string, deps: React.DependencyList) => {
         const [post, setPost] = React.useState<PostType>(null);
         const [isError, setIsError] = React.useState(false);
@@ -39,10 +41,16 @@ export const Edit = (props: EditProps) => {
                 postNo: response.data.post_no,
                 title: response.data.title,
                 content: response.data.content,
+                tags: response.data.tags,
                 createDate: response.data.createDate,
                 updateDate: response.data.updateDate,
             });
             setTitleValue(response.data.title);
+            let tagString = '';
+            for (let tag of response.data.tags) {
+                tagString += '#' + tag + ' ';
+            }
+            setTagsValue(tagString);
         };
 
         const process = async () => {
@@ -64,8 +72,12 @@ export const Edit = (props: EditProps) => {
         return { post, isError, isNoContent, isLoading };
     };
 
-    const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const onTitleChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
         setTitleValue(event.target.value);
+    }
+
+    const onTagsChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setTagsValue(event.target.value);
     }
 
     const savePostRequest = async () => {
@@ -73,7 +85,6 @@ export const Edit = (props: EditProps) => {
             const title = (document.getElementById('e_title') as HTMLInputElement).value;
             const content = editorRef.current?.getInstance().getMarkdown();
             const tags = (document.getElementById('e_tags') as HTMLInputElement).value;
-            // TODO: 태그 추가
             const response = await axios.post('/api/v1/posts/save', {
                 title: title,
                 content: content,
@@ -90,13 +101,14 @@ export const Edit = (props: EditProps) => {
             if (!props) throw 'postNo not exists.';
             const title = (document.getElementById('e_title') as HTMLInputElement).value;
             const content = editorRef.current?.getInstance().getMarkdown();
+            const tags = (document.getElementById('e_tags') as HTMLInputElement).value;
 
             console.log(title, content);
 
-            // TODO: 태그 추가
             const response = await axios.put('/api/v1/posts/update/' + props.match.params.postNo, {
                 title: title,
                 content: content,
+                tags: tags,
             });
             console.log(response);
         } catch (error) {
@@ -143,12 +155,15 @@ export const Edit = (props: EditProps) => {
                     <div className="e_container">
                         <div className="e_title_container">
                             <span>제목</span>
-                            <input id="e_title" value={titleValue} onChange={onChangeHandler}></input>
+                            <input id="e_title" value={titleValue} onChange={onTitleChangeHandler}></input>
                         </div>
                         <div className="e_content_container">
                             <Editor height="600px" initialEditType="markdown" initialValue={post.content} ref={editorRef} />
                         </div>
-                        {/* TODO: 태그 추가 */}
+                        <div className="e_tag_container">
+                            <span>태그</span>
+                            <input id="e_tags" value={tagsValue} onChange={onTagsChangeHandler}></input>
+                        </div>
                         <div className="e_btn_container">
                             <Link to={`/post/${post.postNo}`}>
                                 <button className="e_cancel">취소</button>
