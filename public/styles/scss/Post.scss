@@ -37,7 +37,7 @@ $article-background: white;
 .p_info {
     display: grid;
     grid-template-columns: 180px 50px 1fr;
-    padding: 0px 15px 50px 15px;
+    margin: 0px 15px 10px 15px;
 
     .p_title_time {
         font-size: 15px;
@@ -53,6 +53,23 @@ $article-background: white;
         background-color: $snore-black;
         color:white;
         border-radius: 5px;
+    }
+}
+
+.p_tag_container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    margin-left: 10px;
+
+    .p_tag {
+        font-size: 16px;
+        padding: 2px 5px;
+        margin: 5px;
+        border-radius: 10px;
+        background-color: $snore-black;
+        color: $snore-white;
+        transition: color 0.5s;
     }
 }
 

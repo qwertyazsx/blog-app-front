@@ -15,6 +15,7 @@ type PostType = {
     postNo: string;
     title: string;
     content: string;
+    tags: Array<string>;
     createDate: string;
     updateDate: string | null;
 } | null;
@@ -34,6 +35,7 @@ export const Post = (props: PostProps) => {
                 postNo: response.data.post_no,
                 title: response.data.title,
                 content: response.data.content,
+                tags: response.data.tags,
                 createDate: response.data.createDate,
                 updateDate: response.data.updateDate,
             });
@@ -97,8 +99,13 @@ export const Post = (props: PostProps) => {
                 <div className="p_title">{post.title}</div>
                 <div className="p_info">
                     <div className="p_title_time">{post.createDate}</div>
-                    {/* TODO: 태그 추가 */}
                     <a className="p_edit" href={`/edit/${post.postNo}`}>수정</a>
+                </div>
+                <div className="p_tag_container">
+                        {post.tags.map((tag) => (
+                            // TODO: 태그 클릭시 검색
+                            <div className="p_tag" key={tag}>#{tag}</div>
+                        ))}
                 </div>
             </div>
             <div className="p_article_container">
