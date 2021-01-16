@@ -160,6 +160,7 @@ export const Edit = (props: EditProps) => {
                         <div className="e_content_container">
                             <Editor height="600px" initialEditType="markdown" initialValue={post.content} ref={editorRef} />
                         </div>
+                        {/* TODO: 이미지 추가 */}
                         <div className="e_tag_container">
                             <span>태그</span>
                             <input id="e_tags" value={tagsValue} onChange={onTagsChangeHandler}></input>
