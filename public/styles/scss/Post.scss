@@ -1,7 +1,16 @@
 @import './global.scss';
+@import '~highlight.js/styles/atom-one-dark.css';
 
 $article-title-background: white;
 $article-background: white;
+
+code,
+.code {
+    display: block;
+    font-family: 'Fira Code';
+    font-weight: 500;
+    border-radius: 5px;
+}
 
 .post {
     width: 1000px;
