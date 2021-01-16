@@ -1,7 +1,17 @@
 import * as React from 'react';
 import '../../public/styles/scss/Post.scss';
 import axios from 'axios';
+import showdown from 'showdown';
 import parse from 'html-react-parser';
+import hljs from 'highlight.js';
+import javascript from 'highlight.js/lib/languages/javascript';
+import typescript from 'highlight.js/lib/languages/typescript';
+import python from 'highlight.js/lib/languages/python';
+import markdown from 'highlight.js/lib/languages/markdown';
+import java from 'highlight.js/lib/languages/java';
+import css from 'highlight.js/lib/languages/css';
+import html from 'highlight.js/lib/languages/xml';
+import bash from 'highlight.js/lib/languages/bash';
 
 type PostProps = {
     match: {
@@ -21,6 +31,21 @@ type PostType = {
 } | null;
 
 export const Post = (props: PostProps) => {
+    React.useEffect(() => {
+        hljs.registerLanguage('javascript', javascript);
+        hljs.registerLanguage('typescript', typescript);
+        hljs.registerLanguage('python', python);
+        hljs.registerLanguage('markdown', markdown);
+        hljs.registerLanguage('java', java);
+        hljs.registerLanguage('css', css);
+        hljs.registerLanguage('html', html);
+        hljs.registerLanguage('bash', bash);
+
+        document.querySelectorAll("pre code").forEach(block => {
+            hljs.highlightBlock(block as HTMLElement);
+        });
+    });
+
     const usePost = (postNo: string, deps: React.DependencyList) => {
         const [post, setPost] = React.useState<PostType>(null);
         const [isError, setIsError] = React.useState(false);
@@ -60,6 +85,7 @@ export const Post = (props: PostProps) => {
         return { post, isError, isNoContent, isLoading };
     };
     const { post, isError, isNoContent, isLoading } = usePost(props.match.params.postNo, []);
+    const mdConverter = new showdown.Converter();
 
     if (isLoading) {
         return (
@@ -109,8 +135,7 @@ export const Post = (props: PostProps) => {
                 </div>
             </div>
             <div className="p_article_container">
-                {/* TODO: 마크다운 html로 변환 */}
-                <div className="p_article">{parse(post.content)}</div>
+                <div className="p_article">{parse(mdConverter.makeHtml(post.content))}</div>
             </div>
             {/* TODO: 전후 포스트 추가 */}
         </div>
