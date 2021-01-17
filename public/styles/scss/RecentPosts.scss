@@ -1,0 +1,7 @@
+@import './global.scss';
+
+.recentposts {
+    display: grid;
+    grid-column: 1;
+    row-gap: 50px;
+}

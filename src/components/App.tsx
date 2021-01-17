@@ -9,18 +9,22 @@ import '../../public/styles/scss/App.scss';
 
 export const App = () => {
     const dispatch = useDispatch();
+    const onScroll = () => {
+        const header = document.querySelector('.header');
+        if (header) {
+            if (window.scrollY > header.clientTop + header.clientHeight) {
+                dispatch(scrollUnderHeader());
+            } else {
+                dispatch(scrollAboveHeader());
+            }
+        }
+    }
 
     React.useEffect(() => {
-        window.addEventListener('scroll', (e: Event) => {
-            const header = document.querySelector('.header');
-            if (header) {
-                if (window.scrollY > header.clientTop + header.clientHeight) {
-                    dispatch(scrollUnderHeader());
-                } else {
-                    dispatch(scrollAboveHeader());
-                }
-            }
-        });
+        window.addEventListener('scroll', onScroll);
+        return () => {
+            window.removeEventListener('scroll', onScroll);
+        }
     });
 
     return (

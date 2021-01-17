@@ -1,4 +1,5 @@
 import * as React from 'react';
+import '../../public/styles/scss/RecentPosts.scss';
 import axios from 'axios';
 import { Post } from './Post';
 import { Message } from './Message';
@@ -14,16 +15,16 @@ type PostType = {
 
 export const RecentPosts = () => {
     const [recentPosts, setRecentPosts] = React.useState<Array<PostType>>([]);
-    const [page, setPage] = React.useState<number>();
+    const [page, setPage] = React.useState<number>(0);
+    const [isEnd, setIsEnd] = React.useState(false);
     const [isError, setIsError] = React.useState(false);
-    const [isNoContent, setIsNoContent] = React.useState(false);
     const [isLoading, setIsLoading] = React.useState(false);
+    const [isNoMorePost, setIsNoMorePost] = React.useState(false);
 
     const fetchPost = async (currentPage: number) => {
         const url = `/api/v1/posts/recent/${currentPage + 1}`;
         const response = await axios.get(url);
-        if (response.data.totalPages < currentPage) setIsError(true);
-        else if (response.data.numberOfElements === 0) setIsNoContent(true);
+        if (response.data.totalPages < currentPage || response.data.numberOfElements === 0) setIsNoMorePost(true);
         else {
             setRecentPosts(recentPosts?.concat(response.data.content.map((post: PostType) => {
                 return {
@@ -39,37 +40,41 @@ export const RecentPosts = () => {
         }
     };
 
-    const process = async (page: number) => {
-        setIsError(false);
-        setIsLoading(true);
-        try {
-            await fetchPost(page);
-        } catch (error) {
-            console.log(error);
-            setIsError(true);
+    const processFetch = async (page: number) => {
+        if (!isLoading && !isNoMorePost) {
+            setIsLoading(true);
+            try {
+                await fetchPost(page);
+            } catch (error) {
+                console.log(error);
+                setIsError(true);
+            }
+            setIsLoading(false);
         }
-        setIsLoading(false);
     };
 
+    const onScroll = () => {
+        if (window.scrollY + document.documentElement.clientHeight > document.documentElement.scrollHeight - 10) {
+            setIsEnd(true);
+        }
+    }
+
     React.useEffect(() => {
-        process(0);
+        processFetch(0);
+        window.addEventListener('scroll', onScroll);
+        return () => {
+            window.removeEventListener('scroll', onScroll);
+        }
     }, []);
 
-    if (isLoading) {
-        return (
-            <Message message="데이터를 로드하는 중입니다."/>
-        );
-    }
+    React.useEffect(() => {
+        setIsEnd(false);
+        processFetch(page);
+    }, [isEnd]);
 
     if (isError) {
         return (
             <Message message="데이터 로드에 실패했습니다."/>
-        );
-    }
-
-    if (isNoContent) {
-        return (
-            <Message message="포스트가 없습니다."/>
         );
     }
     
