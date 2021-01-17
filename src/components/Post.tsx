@@ -61,6 +61,7 @@ export const Post = (props: PostProps) => {
             <div className="p_article_container">
                 <div className="p_article">{parse(mdConverter.makeHtml(props.post.content))}</div>
             </div>
+            {/* TODO: 코멘트 추가 */}
             {/* TODO: 전후 포스트 추가 */}
         </div>
     );
