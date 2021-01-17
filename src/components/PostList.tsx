@@ -2,6 +2,7 @@ import * as React from 'react';
 import '../../public/styles/scss/PostList.scss';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { Message } from './Message';
 
 type PostListProps = {
     match: {
@@ -84,31 +85,19 @@ export const PostList = (props: PostListProps) => {
 
     if (isLoading) {
         return (
-            <div className="postlist flex">
-                <div className="message_container">
-                    <span>데이터를 로드하는 중입니다.</span>
-                </div>
-            </div>
+            <Message message="데이터를 로드하는 중입니다."/>
         );
     }
 
     if (isError) {
         return (
-            <div className="postlist flex">
-                <div className="message_container">
-                    <span>데이터 로드에 실패했습니다.</span>
-                </div>
-            </div>
+            <Message message="데이터 로드에 실패했습니다."/>
         );
     }
 
     if (isNoContent) {
         return (
-            <div className="postlist flex">
-                <div className="message_container">
-                    <span>포스트가 없습니다.</span>
-                </div>
-            </div>
+            <Message message="포스트가 없습니다."/>
         );
     }
 

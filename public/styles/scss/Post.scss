@@ -1,7 +1,16 @@
 @import './global.scss';
+@import '~highlight.js/styles/atom-one-dark.css';
 
 $article-title-background: white;
 $article-background: white;
+
+code,
+.code {
+    display: block;
+    font-family: 'Fira Code';
+    font-weight: 500;
+    border-radius: 5px;
+}
 
 .post {
     width: 1000px;
@@ -13,14 +22,6 @@ $article-background: white;
     -moz-box-shadow: 10px 10px 29px 0px rgba(0, 0, 0, 0.33);
     box-shadow: 10px 10px 29px 0px rgba(0, 0, 0, 0.33);
     border-radius: 5px;
-}
-
-.message_container {
-    width: 100%;
-    height: 700px;
-    display: grid;
-    place-items: center;
-    font-size: 30px;
 }
 
 .p_title_container {
@@ -67,7 +68,7 @@ $article-background: white;
         padding: 2px 5px;
         margin: 5px;
         border-radius: 10px;
-        background-color: $snore-black;
+        background-color: $snore-dark-grey;
         color: $snore-white;
         transition: color 0.5s;
     }
@@ -77,6 +78,7 @@ $article-background: white;
     background-color: $article-background;
 }
 
+// TODO: article 디자인 변경
 .p_article {
     padding: 15px;
 }
