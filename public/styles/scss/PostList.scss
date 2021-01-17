@@ -1,7 +1,5 @@
 @import './global.scss';
 
-$header-grey: #5a5a5a;
-
 .postlist {
     width: 1000px;
     margin: 10px auto;
@@ -42,7 +40,7 @@ $header-grey: #5a5a5a;
 
         .pl_card_header {
             display: grid;
-            background-color: $header-grey;
+            background-color: $snore-dark-grey;
             color: white;
             align-items: center;
             justify-content: space-between;
@@ -64,7 +62,7 @@ $header-grey: #5a5a5a;
                     margin: 5px;
                     border-radius: 10px;
                     background-color: $snore-white;
-                    color: $header-grey;
+                    color: $snore-dark-grey;
                     transition: color 0.5s;
                 }
             }
